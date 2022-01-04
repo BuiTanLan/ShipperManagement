@@ -1,0 +1,3 @@
+﻿design: https://dbdiagram.io/d/61b0aa108c901501c0e6be05?fbclid=IwAR17xpGqW_z36R7j9NlBT2Hpn8Wi11LbrEe43Jxt5Cyzai45woauNjz8MxQ
+sheet: https://docs.google.com/spreadsheets/d/1aAFmcat5C7BY8TfIqNg_9-6L8vQHa6_kE847gsRgHvw/edit?fbclid=IwAR0ghE7-KWfgUjsLNVcQc9RB6ldu7QjMdrsXBijbmD6LaMEetxJ14-tyiec#gid=1947545886
+Descrip: bai lam
