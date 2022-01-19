@@ -26,6 +26,13 @@ namespace WebApi
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IShipperService, ShipperService>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy("CorsPolicy", policy =>
+                {
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200");
+                });
+            });
 
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "WebApi", Version = "v1"}); });
         }
@@ -41,6 +48,8 @@ namespace WebApi
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApi v1"));
             }
+            app.UseCors("CorsPolicy");
+
 
             app.UseHttpsRedirection();
 
