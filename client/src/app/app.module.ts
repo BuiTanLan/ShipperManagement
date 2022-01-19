@@ -17,12 +17,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatInputModule } from '@angular/material/input';
 import { OrderComponent } from './order/order.component';
+import { DetailOrderComponent } from './detail-order/detail-order.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    OrderComponent
+    OrderComponent,
+    DetailOrderComponent
   ],
   imports: [
     BrowserModule,
