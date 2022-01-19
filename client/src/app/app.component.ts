@@ -1,7 +1,7 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { CommonService } from './Services/common.service';
-import { ServerHttpService } from './Services/server-http.service';
+import { CommonService } from './services/common.service';
+import { ServerHttpService } from './services/server-http.service';
 
 @Component({
   selector: 'app-root',

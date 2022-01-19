@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonService } from '../Services/common.service';
-import { ServerHttpService } from '../Services/server-http.service';
-import { shipper } from '../Models/Shipper';
+import { CommonService } from '../services/common.service';
+import { ServerHttpService } from '../services/server-http.service';
+import { shipper } from '../models/Shipper';
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',

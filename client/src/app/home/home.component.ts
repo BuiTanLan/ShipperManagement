@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ServerHttpService } from '../Services/server-http.service';
-import { shipper } from '../Models/Shipper';
+import { ServerHttpService } from '../services/server-http.service';
+import { shipper } from '../models/Shipper';
 
 @Component({
   selector: 'app-home',
