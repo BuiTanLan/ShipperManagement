@@ -8,12 +8,16 @@ import { shipper } from '../Models/Shipper';
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent implements OnInit {
-  public  order: shipper[]= [];
+  public  order: shipper[]= [];     ////////////////////////
   public  user= '';
+  public OD =0;
+
   constructor(
     private common: CommonService,
     private serverHttp: ServerHttpService  )
-     {}
+     {
+       this.OD = common.OD;
+     }
 
   ngOnInit(): void {
     this.serverHttp.getOrder().subscribe((data)=>{
@@ -21,5 +25,9 @@ export class OrderComponent implements OnInit {
       console.log(this.order);
 
     });
+  }
+  public getOD(id : number){
+    this.common.OD = id;
+    this.OD = this.common.OD;
   }
 }

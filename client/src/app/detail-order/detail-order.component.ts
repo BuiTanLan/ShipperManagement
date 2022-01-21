@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from '../Services/common.service';
+import { ServerHttpService } from '../Services/server-http.service';
 
 @Component({
   selector: 'app-detail-order',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailOrderComponent implements OnInit {
 
-  constructor() { }
+public OD = 0;
+  constructor(
+    private common: CommonService,
+    private serverHttp: ServerHttpService  )
+     {
+      this.OD = this.common.OD;
+     }
+  ngOnInit(): void {  }
+  public getOD(id : number){
+    this.common.OD = id;
+    this.OD = this.common.OD;
 
-  ngOnInit(): void {
   }
-
 }

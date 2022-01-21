@@ -51,6 +51,34 @@ export class ServerHttpService {
   }
 
 
+  public getStore() : Observable<any> {
+    const url = `${this.REST_API_SERVER}/store`;
+    return this.httpClient
+    .get<any>(url,this.httpOptions)
+    .pipe(catchError(this.handleError));
+  }
+
+  public getStoreID(orderID: number) {
+    const url = `${this.REST_API_SERVER}/store/` + orderID;
+    return this.httpClient
+      .get<any>(url, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+
+  public getShipper() : Observable<any> {
+    const url = `${this.REST_API_SERVER}/shipper`;
+    return this.httpClient
+    .get<any>(url,this.httpOptions)
+    .pipe(catchError(this.handleError));
+  }
+
+  public getShipperID(orderID: number) {
+    const url = `${this.REST_API_SERVER}/shipper/` + orderID;
+    return this.httpClient
+      .get<any>(url, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {

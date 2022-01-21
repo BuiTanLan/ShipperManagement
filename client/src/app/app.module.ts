@@ -18,13 +18,17 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatInputModule } from '@angular/material/input';
 import { OrderComponent } from './order/order.component';
 import { DetailOrderComponent } from './detail-order/detail-order.component';
+import { HistoryComponent } from './history/history.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     OrderComponent,
-    DetailOrderComponent
+    DetailOrderComponent,
+    HistoryComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

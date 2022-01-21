@@ -11,31 +11,7 @@
  <body >
 
  <!-- Navbar -->
- <div class="w3-top">
-   <div class="w3-bar w3-black w3-card">
-     <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-     <a href="#" class="w3-bar-item w3-button w3-padding-large">TRANG CHỦ</a>
-     <a href="#shipper" class="w3-bar-item w3-button w3-padding-large w3-hide-small">THÔNG TIN CÁ NHÂN</a>
-     <a href="#history" class="w3-bar-item w3-button w3-padding-large w3-hide-small">LỊCH SỬ GIAO DỊCH</a>
-     <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
-     <div class="w3-dropdown-hover w3-hide-small">
-       <button class="w3-padding-large w3-button" title="More">MORE <i class="fa fa-caret-down"></i></button>
-       <div class="w3-dropdown-content w3-bar-block w3-card-4">
-         <a href="#" class="w3-bar-item w3-button">Thông tin liên hệ</a>
-         <a href="#" class="w3-bar-item w3-button">Đăng xuất</a>
-       </div>
-     </div>
-     <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
-   </div>
- </div>
 
- <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
- <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
-   <a href="#shipper" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">shipper</a>
-   <a href="#history" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">history</a>
-   <a href="#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">CONTACT</a>
-   <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">MERCH</a>
- </div>
 
  <!-- Page content -->
  <div class="w3-content" style="max-width:2000px;margin-top:46px">
@@ -58,7 +34,7 @@
          <div *ngFor="let or of order">
 
            <div id="que-hedder2983">
-                 <h2><a [routerLink]="['/detail']" routerLinkActive="router-link-active" target="_blank">Thông tin đơn hàng</a></h2> </div>
+                 <h2><a target="_blank">Thông tin đơn hàng</a></h2> </div>
 
              <div class="ques-details10018">
                  <p>{{ or.id}}</p>
@@ -67,7 +43,7 @@
                <div class="ques-type302">
 
                    <a [routerLink]="['/detail']" routerLinkActive="router-link-active" >
-                       <button type="button" class="q-type23 button-ques2973"> <i  aria-hidden="true"></i> Xác nhận nhận đơn </button>
+                       <button (click) = getOD(3) type="button" class="q-type23 button-ques2973"> <i  aria-hidden="true"></i>Nhấn để xem chi tiết đơn hàng</button>
                    </a>
                </div>
              <div class="ques-icon-info3293"> <a href="#"><i class="fa fa-star" aria-hidden="true"> 5 </i> </a> <a href="#"><i class="fa fa-folder" aria-hidden="true"> wordpress</i></a> <a href="#"><i class="fa fa-clock-o" aria-hidden="true"> 4 min ago</i></a> <a href="#"><i class="fa fa-question-circle-o" aria-hidden="true"> Question</i></a> <a href="#"><i class="fa fa-bug" aria-hidden="true"> Report</i></a> </div>
