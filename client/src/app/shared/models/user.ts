@@ -1,4 +1,4 @@
-export interface order {
+export interface Order {
   id: number;
   email: string;
   password: string;

@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -17,9 +17,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatInputModule } from '@angular/material/input';
 import { OrderComponent } from './order/order.component';
-import { DetailOrderComponent } from './detail-order/detail-order.component';
+import { DetailOrderComponent } from './order/detail-order/detail-order.component';
 import { HistoryComponent } from './history/history.component';
 import { UserComponent } from './user/user.component';
+import {JwtInterceptor} from "./shared/interceptors/jwt.interceptor";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,9 @@ import { UserComponent } from './user/user.component';
     MatButtonModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

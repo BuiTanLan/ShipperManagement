@@ -1,7 +1,7 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { CommonService } from './Services/common.service';
-import { ServerHttpService } from './Services/server-http.service';
+import { OrderService } from './shared/services/order.service';
+import { ShipperService } from './shared/services/shipper.service';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +16,8 @@ export class AppComponent {
   public totalOrder = 0;
 
   constructor(
-    private common: CommonService,
-    private serverHttp: ServerHttpService
+    private common: OrderService,
+    private serverHttp: ShipperService
   ) {}
 
   ngOnInit(): void {

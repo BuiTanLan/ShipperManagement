@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { shipper } from '../Models/Shipper';
+import { Shipper } from '../models/shipper';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CommonService {
+export class OrderService {
   public totalOrder = 0;
   public totalOrder$ = new BehaviorSubject<number>(0);
   public OD = 0;
@@ -17,7 +17,7 @@ export class CommonService {
     this.totalOrder$.next(total);
   }
 
-  public increamentOrder() {
+  public incrementOrder() {
     this.totalOrder++;
     this.totalOrder$.next(this.totalOrder);
   }

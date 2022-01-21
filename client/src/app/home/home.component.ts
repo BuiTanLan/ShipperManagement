@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ServerHttpService } from '../Services/server-http.service';
-import { shipper } from '../Models/Shipper';
+import { ShipperService } from '../shared/services/shipper.service';
+import { Shipper } from '../shared/models/shipper';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
 
 
 
-  constructor(private serverHttp: ServerHttpService) { }
+  constructor(private serverHttp: ShipperService) { }
 
   ngOnInit(): void {}
 }

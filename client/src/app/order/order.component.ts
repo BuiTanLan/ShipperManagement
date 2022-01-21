@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonService } from '../Services/common.service';
-import { ServerHttpService } from '../Services/server-http.service';
-import { shipper } from '../Models/Shipper';
+import { OrderService } from '../shared/services/order.service';
+import { ShipperService } from '../shared/services/shipper.service';
+import { Shipper } from '../shared/models/shipper';
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent implements OnInit {
-  public  order: shipper[]= [];     ////////////////////////
+  public  order: Shipper[]= [];     ////////////////////////
   public  user= '';
   public OD =0;
 
   constructor(
-    private common: CommonService,
-    private serverHttp: ServerHttpService  )
+    private common: OrderService,
+    private serverHttp: ShipperService  )
      {
        this.OD = common.OD;
      }

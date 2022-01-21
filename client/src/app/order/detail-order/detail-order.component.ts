@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonService } from '../Services/common.service';
-import { ServerHttpService } from '../Services/server-http.service';
+import { OrderService } from '../../shared/services/order.service';
+import { ShipperService } from '../../shared/services/shipper.service';
 
 @Component({
   selector: 'app-detail-order',
@@ -11,8 +11,8 @@ export class DetailOrderComponent implements OnInit {
 
 public OD = 0;
   constructor(
-    private common: CommonService,
-    private serverHttp: ServerHttpService  )
+    private common: OrderService,
+    private serverHttp: ShipperService  )
      {
       this.OD = this.common.OD;
      }
