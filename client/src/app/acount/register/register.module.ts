@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './register.component';
 import {LoginComponent} from "../login/login.component";
+import {TextInputModule} from "../../shared/components/text-input/text-input.module";
 
 
 
@@ -10,10 +11,11 @@ import {LoginComponent} from "../login/login.component";
     RegisterComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    TextInputModule
   ],
   exports: [
-    RegisterComponent
+    RegisterComponent,
   ]
 })
 export class RegisterModule { }

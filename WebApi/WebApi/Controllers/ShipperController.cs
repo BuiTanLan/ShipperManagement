@@ -18,9 +18,9 @@ namespace WebApi.Controllers
             _shipperService = shipperService;
         }
         [HttpPost]
-        public async Task<int> CreateShipper([FromBody] ShipperCreateRequestDto dto)
+        public async Task<string> RegisterShipper([FromBody] ShipperCreateRequestDto dto)
         {
-            var result = await _shipperService.CreateShipperAsync(dto);
+            var result = await _shipperService.RegisterShipperAsync(dto);
             return result;
 
         }
@@ -31,7 +31,7 @@ namespace WebApi.Controllers
             return await _shipperService.GetAllShipperAsync();
         }
         
-        [HttpGet("id")]
+        [HttpGet("{id:int}")]
         public async Task<ShipperResponseDto> GetShipperByIdAsync(int id)
         {
             return await _shipperService.GetShipperByIdAsync(id);

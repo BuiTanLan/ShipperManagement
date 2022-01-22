@@ -12,6 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Scripts\get_all_category.sql = Scripts\get_all_category.sql
 		Scripts\get_category.sql = Scripts\get_category.sql
 		Scripts\update_category.sql = Scripts\update_category.sql
+		Scripts\Delivery area.txt = Scripts\Delivery area.txt
+		Scripts\register_shipper.sql = Scripts\register_shipper.sql
+		Scripts\get_shipper.sql = Scripts\get_shipper.sql
 	EndProjectSection
 EndProject
 Global

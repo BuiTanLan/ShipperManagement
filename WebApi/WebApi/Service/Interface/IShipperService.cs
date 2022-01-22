@@ -9,7 +9,7 @@ namespace WebApi.Service.Interface
     {
         Task<IEnumerable<ShipperResponseDto>> GetAllShipperAsync();
         Task<ShipperResponseDto> GetShipperByIdAsync(int id);
-        Task<int> CreateShipperAsync(ShipperCreateRequestDto dto);
+        Task<string> RegisterShipperAsync(ShipperCreateRequestDto dto);
         Task UpdateShipperAsync(ShipperCreateRequestDto dto, int id);
         Task DeleteShipperAsync(int id);
     }

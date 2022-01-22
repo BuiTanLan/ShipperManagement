@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {concatMap, map, Observable, of} from 'rxjs';
 import {environment} from "../../../environments/environment";
 
 
@@ -14,6 +14,38 @@ export class ShipperService {
 
   constructor(private readonly http: HttpClient) {}
 
+
+  registerShipper(value: any){
+    return this.http.post<string>(`${this.SHIPPER_API_SERVER}/shipper`, value).pipe(
+      map((accessToken: string) => {
+        if(accessToken) {
+          localStorage.setItem('accessToken', accessToken);
+          return this.parseJwt(accessToken).sub.toString();
+        }
+        return null;
+      }),
+      concatMap((shipperId: string | null) => {
+         if(shipperId) {
+           return this.getShipperById(shipperId);
+         }
+         return of(null)
+      })
+
+    )
+  }
+
+  parseJwt<T extends { sub: number; exp: number }>(token: string): T {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const atob = (str: string) => Buffer.from(str, 'base64').toString('binary');
+    const jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split('')
+        .map((c: string) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+        .join(''),
+    );
+    return JSON.parse(jsonPayload);
+  }
 
   public getOrder() : Observable<any> {
     const url = `${this.SHIPPER_API_SERVER}/shipper`;
@@ -48,8 +80,8 @@ export class ShipperService {
   }
 
 
-  public getShipper() : Observable<any> {
-    const url = `${this.SHIPPER_API_SERVER}/shipper`;
+  getShipperById(id: string) : Observable<any> {
+    const url = `${this.SHIPPER_API_SERVER}/shipper/${id}`;
     return this.http.get<any>(url);
   }
 
