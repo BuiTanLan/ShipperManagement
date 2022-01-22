@@ -3,8 +3,8 @@ export interface Order {
   userId: number;
   shipperId: number;
   status?: string;
-  createAt?: string;
-  updateAt?: string;
+  createAt?: Date;
+  updateAt?: Date;
   detailAddress?: string;
   district?: string;
   province?: string;

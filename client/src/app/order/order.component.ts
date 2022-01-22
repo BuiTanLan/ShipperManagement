@@ -9,7 +9,7 @@ import {Order} from "../shared/models/order";
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent implements OnInit {
-  public  order: Order[]= [];     ////////////////////////
+  public  order: Order[]= [];
   public  user= '';
   public OD =0;
 

@@ -1,6 +1,6 @@
-export interface Shipper {
+export interface OrderHistory {
   id: number;
-  userId: number;
+  status: number;
   createAt?: Date;
   updateAt?: Date;
 }

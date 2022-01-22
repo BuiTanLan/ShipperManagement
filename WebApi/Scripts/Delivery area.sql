@@ -41,6 +41,7 @@ select
     d.update_at as UpdateAt,
     d.district as District,
     d.province as Province
+
 from delivery d
 where d.id = id;
 END;
