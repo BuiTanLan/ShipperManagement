@@ -30,7 +30,7 @@ export class ServerHttpService {
   }
 
   public getOrderID(orderID: number) {
-    const url = `${this.REST_API_SERVER}/order/` + orderID;
+    const url = `${this.REST_API_SERVER}/shipper/` + orderID;
     return this.httpClient
       .get<any>(url, this.httpOptions)
       .pipe(catchError(this.handleError));
@@ -43,8 +43,8 @@ export class ServerHttpService {
     .pipe(catchError(this.handleError));
   }
 
-  public getUserID(orderID: number) {
-    const url = `${this.REST_API_SERVER}/users/` + orderID;
+  public getUserID(UserID: number) {
+    const url = `${this.REST_API_SERVER}/users/` + UserID;
     return this.httpClient
       .get<any>(url, this.httpOptions)
       .pipe(catchError(this.handleError));
@@ -58,12 +58,13 @@ export class ServerHttpService {
     .pipe(catchError(this.handleError));
   }
 
-  public getStoreID(orderID: number) {
-    const url = `${this.REST_API_SERVER}/store/` + orderID;
+  public getStoreID(StoreID: number) {
+    const url = `${this.REST_API_SERVER}/store/` + StoreID;
     return this.httpClient
       .get<any>(url, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
+
 
 
   public getShipper() : Observable<any> {
@@ -73,12 +74,28 @@ export class ServerHttpService {
     .pipe(catchError(this.handleError));
   }
 
-  public getShipperID(orderID: number) {
-    const url = `${this.REST_API_SERVER}/shipper/` + orderID;
+  public getShipperID(ShipperID: number) {
+    const url = `${this.REST_API_SERVER}/shipper/` + ShipperID;
     return this.httpClient
       .get<any>(url, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
+
+
+  public getProduct() : Observable<any> {
+    const url = `${this.REST_API_SERVER}/products`;
+    return this.httpClient
+    .get<any>(url,this.httpOptions)
+    .pipe(catchError(this.handleError));
+  }
+
+  public getProductID(ProductID: number) {
+    const url = `${this.REST_API_SERVER}/products/` + ProductID;
+    return this.httpClient
+      .get<any>(url, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {

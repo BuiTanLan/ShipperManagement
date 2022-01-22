@@ -10,7 +10,7 @@ import { shipper } from '../Models/Shipper';
 export class OrderComponent implements OnInit {
   public  order: shipper[]= [];     ////////////////////////
   public  user= '';
-  public OD =0;
+  public OD =1;
 
   constructor(
     private common: CommonService,
@@ -20,7 +20,7 @@ export class OrderComponent implements OnInit {
      }
 
   ngOnInit(): void {
-    this.serverHttp.getOrder().subscribe((data)=>{
+    this.serverHttp.getOrderID(1).subscribe((data)=>{
       this.order = data;
       console.log(this.order);
 
