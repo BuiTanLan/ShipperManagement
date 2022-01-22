@@ -37,7 +37,6 @@ export class ShipperService {
   parseJwt<T extends { sub: number; exp: number }>(token: string): T {
     const base64Url = token.split('.')[1];
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const atob = (str: string) => Buffer.from(str, 'base64').toString('binary');
     const jsonPayload = decodeURIComponent(
       atob(base64)
         .split('')

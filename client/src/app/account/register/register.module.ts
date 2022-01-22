@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './register.component';
-import {LoginComponent} from "../login/login.component";
 import {TextInputModule} from "../../shared/components/text-input/text-input.module";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {RegisterRoutingModule} from "./register-routing.module";
 
 
 
@@ -12,7 +13,10 @@ import {TextInputModule} from "../../shared/components/text-input/text-input.mod
   ],
   imports: [
     CommonModule,
-    TextInputModule
+    TextInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RegisterRoutingModule
   ],
   exports: [
     RegisterComponent,

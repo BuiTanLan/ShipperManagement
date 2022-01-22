@@ -31,8 +31,8 @@ export class RegisterComponent implements OnInit {
         [],
       ],
       password: [null, [Validators.required]],
-
-
+      address: [null, [Validators.required]],
+      phone: [null, [Validators.required]],
     });
   }
   onSubmit() {
@@ -44,20 +44,4 @@ export class RegisterComponent implements OnInit {
       }
     });
   }
-  // validateEmailNotToken(): AsyncValidatorFn {
-  //   return control => {
-  //     return timer(500).pipe(
-  //       switchMap(() => {
-  //         if (!control.value) {
-  //           return of(null);
-  //         }
-  //         return this.accountService.checkEmailExists(control.value).pipe(
-  //           map(res => {
-  //             return res ? { emailExists: true } : null;
-  //           })
-  //         );
-  //       })
-  //     );
-  //   };
-  // }
 }

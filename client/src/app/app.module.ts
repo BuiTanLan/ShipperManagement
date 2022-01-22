@@ -21,6 +21,7 @@ import { DetailOrderComponent } from './order/detail-order/detail-order.componen
 import { HistoryComponent } from './history/history.component';
 import { UserComponent } from './user/user.component';
 import {JwtInterceptor} from "./shared/interceptors/jwt.interceptor";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -32,6 +33,8 @@ import {JwtInterceptor} from "./shared/interceptors/jwt.interceptor";
     UserComponent
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
