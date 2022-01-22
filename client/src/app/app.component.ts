@@ -2,6 +2,7 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { OrderService } from './shared/services/order.service';
 import { ShipperService } from './shared/services/shipper.service';
+import jwt_decode, {JwtPayload} from "jwt-decode";
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,6 @@ import { ShipperService } from './shared/services/shipper.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'HelloWorld';
   @ViewChild('sidenav')
   sidenav!: MatSidenav;
   public isOpened = false;
@@ -21,14 +21,15 @@ export class AppComponent {
   ) {}
 
   ngOnInit(): void {
-    this.common.totalOrder$.subscribe((total) => {
-      this.totalOrder = total;
-    });
-    if (this.common.totalOrder === 0) {
-      this.serverHttp.getOrder().subscribe((data) => {
-        this.common.setTotalOrder(data.length);
-      });
-    }
+
+    // this.common.totalOrder$.subscribe((total) => {
+    //   this.totalOrder = total;
+    // });
+    // if (this.common.totalOrder === 0) {
+    //   this.serverHttp.getOrder().subscribe((data) => {
+    //     this.common.setTotalOrder(data.length);
+    //   });
+    // }
   }
 
   public openLeftSide() {

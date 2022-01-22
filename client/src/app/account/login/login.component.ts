@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import {AccountService} from "../../shared/services/account.service";
+import {ActivatedRoute, Router} from '@angular/router';
+import {ShipperService} from "../../shared/services/shipper.service";
 
 @Component({
   selector: 'app-login',
@@ -10,9 +10,10 @@ import {AccountService} from "../../shared/services/account.service";
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+  returnUrl!: string;
 
   constructor(
-    private readonly accountService: AccountService,
+    private readonly shipperService: ShipperService,
     private readonly router: Router) { }
 
   ngOnInit() {
@@ -25,9 +26,11 @@ export class LoginComponent implements OnInit {
     });
   }
   onSubmit() {
-    // this.accountService.login(this.loginForm.value).subscribe({
-    //   next: () => void this.router.navigateByUrl(this.returnUrl),
-    //   error: (error: any) => console.log(error)
-    // });
+    this.shipperService.login(this.loginForm.value).subscribe({
+      next: () => void this.router.navigateByUrl(this.returnUrl),
+      error: (error: any) => {
+        console.log(error);
+      }
+    });
   }
 }

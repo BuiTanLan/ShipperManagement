@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {ShipperService} from "../../shared/services/shipper.service";
+import {Shipper} from "../../shared/models/shipper";
 
 
 @Component({
@@ -37,7 +38,13 @@ export class RegisterComponent implements OnInit {
   }
   onSubmit() {
     this.shipperService.registerShipper(this.registerForm.value).subscribe({
-      next: () => void this.router.navigateByUrl('/'),
+      next: (user: Shipper | null) => {
+        if(user){
+          console.log(user)
+          void this.router.navigateByUrl('/');
+        }
+
+      },
       error: (error: { errors: string; }) => {
         console.log(error);
         this.errors = error.errors;

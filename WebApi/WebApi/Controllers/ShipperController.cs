@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Win32.SafeHandles;
 using WebApi.Dto.Request;
 using WebApi.Dto.Response;
 using WebApi.Service.Interface;
@@ -18,10 +19,10 @@ namespace WebApi.Controllers
             _shipperService = shipperService;
         }
         [HttpPost]
-        public async Task<string> RegisterShipper([FromBody] ShipperCreateRequestDto dto)
+        public async Task<object> RegisterShipper([FromBody] ShipperCreateRequestDto dto)
         {
             var result = await _shipperService.RegisterShipperAsync(dto);
-            return result;
+            return new {AccessToken = result};
 
         }
         
