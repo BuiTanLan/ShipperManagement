@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import {concatMap, map, Observable, of} from 'rxjs';
+import {concatMap, map, Observable, of, ReplaySubject} from 'rxjs';
 import {environment} from "../../../environments/environment";
+import {Shipper} from "../models/shipper";
 
 
 @Injectable({
@@ -11,26 +12,23 @@ import {environment} from "../../../environments/environment";
 
 export class ShipperService {
   private SHIPPER_API_SERVER = environment.SHIPPER_API_SERVER;
+  private currentShipperSource =  new ReplaySubject<Shipper | null>(1)
+  currentShipper$ = this.currentShipperSource.asObservable();
 
   constructor(private readonly http: HttpClient) {}
 
 
   registerShipper(value: any){
-    return this.http.post<string>(`${this.SHIPPER_API_SERVER}/shipper`, value).pipe(
-      map((accessToken: string) => {
-        if(accessToken) {
-          localStorage.setItem('accessToken', accessToken);
-          return this.parseJwt(accessToken).sub.toString();
-        }
-        return null;
+    return this.http.post<any>(`${this.SHIPPER_API_SERVER}/shipper`, value).pipe(
+      concatMap((res: any) => {
+        localStorage.setItem('accessToken', res.accessToken);
+        const id = this.parseJwt(res.accessToken).sub.toString();
+        return this.getShipperById(id);
       }),
-      concatMap((shipperId: string | null) => {
-         if(shipperId) {
-           return this.getShipperById(shipperId);
-         }
-         return of(null)
+      map((shipper: Shipper | null) => {
+        this.currentShipperSource.next(shipper);
+        return shipper;
       })
-
     )
   }
 
@@ -79,9 +77,9 @@ export class ShipperService {
   }
 
 
-  getShipperById(id: string) : Observable<any> {
+  getShipperById(id: string) : Observable<Shipper> {
     const url = `${this.SHIPPER_API_SERVER}/shipper/${id}`;
-    return this.http.get<any>(url);
+    return this.http.get<Shipper>(url);
   }
 
   public getShipperId(orderID: number) {
@@ -90,6 +88,33 @@ export class ShipperService {
   }
 
 
+  login(value: any) {
+    return this.http.post<any>(`${this.SHIPPER_API_SERVER}/shipper/login`, value).pipe(
+      concatMap((res: any) => {
+        localStorage.setItem('accessToken', res.accessToken);
+        const id = this.parseJwt(res.accessToken).sub.toString();
+        return this.getShipperById(id);
+      }),
+      map((shipper: Shipper) => {
+        this.currentShipperSource.next(shipper);
+      })
+    )
+  }
 
+
+  loadCurrentUser(accessToken: string | null): Observable<any> {
+    if (!accessToken) {
+      this.currentShipperSource.next(null);
+      return of(null);
+    }
+    const id = this.parseJwt(accessToken).sub.toString();
+    return this.getShipperById(id).pipe(
+      map((shipper: Shipper) => {
+        if (shipper) {
+          this.currentShipperSource.next(shipper);
+        }
+      })
+    );
+  }
 }
 

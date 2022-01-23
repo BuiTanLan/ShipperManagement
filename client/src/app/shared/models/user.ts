@@ -1,14 +1,13 @@
-export interface Order {
-  id: number;
+export interface User {
+  id?: number;
   email: string;
   password: string;
-  full_name: string;
-  birthday: Date;
+  fullName: string;
+  birthday?: string;
   phone: string;
-  address: Text;
-  avatar_url?: Text;
+  address?: string;
+  avatarUrl?: Text;
   role?: number;
-  rf_token?: string;
-  create_at?: Date;
-  update_at?: Date;
+  createAt?: Date;
+  updateAt?: Date;
 }

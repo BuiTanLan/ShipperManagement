@@ -8,7 +8,11 @@ import {LoginComponent} from "./account/login/login.component";
 import {RegisterComponent} from "./account/register/register.component";
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+  {
+    path: 'login',
+    loadChildren: () => import('./account/login/login.module').then(m => m.LoginModule),
+    component: LoginComponent
+  },
   { path: 'register',
     loadChildren: () => import('./account/register/register.module').then(m => m.RegisterModule),
     component: RegisterComponent
