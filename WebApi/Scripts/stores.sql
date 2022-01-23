@@ -14,9 +14,9 @@ from stores d;
 END;
 
 
---get_payment
+--get_store
 create
-definer = dbmasteruser@`%` procedure get_payment(IN id int)
+definer = dbmasteruser@`%` procedure get_store(IN id int)
 BEGIN
 
 select

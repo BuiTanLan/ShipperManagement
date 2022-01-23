@@ -13,7 +13,7 @@ from orders_history d;
 END;
 
 
---get_payment
+--get_orderHistory
 create
 definer = dbmasteruser@`%` procedure get_orderHistory(IN id int)
 BEGIN
@@ -27,6 +27,8 @@ from orders_history d;
 where d.id = id;
 END;
 
+
+ -- create_orderHistory
 create
 definer = dbmasteruser@`%` procedure create_orderHistory( IN status int, OUT id int)
 BEGIN
