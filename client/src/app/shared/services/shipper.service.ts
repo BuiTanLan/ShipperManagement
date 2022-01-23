@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import {concatMap, map, Observable, of} from 'rxjs';
+import {concatMap, map, Observable, of, ReplaySubject} from 'rxjs';
 import {environment} from "../../../environments/environment";
 import {Shipper} from "../models/shipper";
 
@@ -12,6 +12,8 @@ import {Shipper} from "../models/shipper";
 
 export class ShipperService {
   private SHIPPER_API_SERVER = environment.SHIPPER_API_SERVER;
+  private currentShipperSource =  new ReplaySubject<Shipper | null>(1)
+  currentShipper$ = this.currentShipperSource.asObservable();
 
   constructor(private readonly http: HttpClient) {}
 
@@ -23,6 +25,10 @@ export class ShipperService {
         const id = this.parseJwt(res.accessToken).sub.toString();
         return this.getShipperById(id);
       }),
+      map((shipper: Shipper | null) => {
+        this.currentShipperSource.next(shipper);
+        return shipper;
+      })
     )
   }
 
@@ -89,7 +95,26 @@ export class ShipperService {
         const id = this.parseJwt(res.accessToken).sub.toString();
         return this.getShipperById(id);
       }),
+      map((shipper: Shipper) => {
+        this.currentShipperSource.next(shipper);
+      })
     )
+  }
+
+
+  loadCurrentUser(accessToken: string | null): Observable<any> {
+    if (!accessToken) {
+      this.currentShipperSource.next(null);
+      return of(null);
+    }
+    const id = this.parseJwt(accessToken).sub.toString();
+    return this.getShipperById(id).pipe(
+      map((shipper: Shipper) => {
+        if (shipper) {
+          this.currentShipperSource.next(shipper);
+        }
+      })
+    );
   }
 }
 

@@ -17,11 +17,11 @@ export class AppComponent {
 
   constructor(
     private common: OrderService,
-    private serverHttp: ShipperService
+    private readonly shipperService: ShipperService
   ) {}
 
   ngOnInit(): void {
-
+    this.loadCurrentUser()
     // this.common.totalOrder$.subscribe((total) => {
     //   this.totalOrder = total;
     // });
@@ -30,6 +30,13 @@ export class AppComponent {
     //     this.common.setTotalOrder(data.length);
     //   });
     // }
+  }
+  loadCurrentUser() {
+    const token = localStorage.getItem('token');
+    this.shipperService.loadCurrentUser(token).subscribe({
+      next: () => console.log('load user'),
+      error: error => console.log(error)
+    });
   }
 
   public openLeftSide() {
