@@ -7,7 +7,6 @@ using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
 using WebApi.Dto.Request;
 using WebApi.Dto.Response;
-using WebApi.Entities;
 using WebApi.Service.Interface;
 
 

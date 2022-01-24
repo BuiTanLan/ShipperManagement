@@ -30,6 +30,7 @@ namespace WebApi
             services.AddScoped<IShipperService, ShipperService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IOrderService, OrderService>();
             services.AddCors(opt =>
             {
                 opt.AddPolicy("CorsPolicy", policy =>

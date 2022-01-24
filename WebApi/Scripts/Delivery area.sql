@@ -3,8 +3,8 @@ create
 definer = dbmasteruser@`%` procedure create_DeliveryArea(IN name varchar(50), OUT id int)
 BEGIN
 
-insert into delivery_area ( id_shipper, district, province,create_at, update_at) VALUES
-    (id_shipper,district, province, date_add(now(), interval 7 hour ),  date_add(now(), interval 7 hour ));
+insert into delivery_area ( shipper_id, district, province,create_at, update_at) VALUES
+    (shipper_id,district, province, date_add(now(), interval 7 hour ),  date_add(now(), interval 7 hour ));
 set id = last_insert_id();
 
 END;
@@ -17,7 +17,7 @@ definer = dbmasteruser@`%` procedure get_all_DeliveryArea()
 BEGIN
 
 select
-    d.id_shipper as IDShipper,
+    d.shipper_id as IDShipper,
     d.create_at as CreateAt,
     d.id as Id,
     d.update_at as UpdateAt,
