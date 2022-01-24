@@ -22,5 +22,11 @@ namespace WebApi.Controllers
         {
             return await _orderService.GetOrderShipper(id);
         }
+        
+        [HttpGet]
+        public async Task<IEnumerable<OrderShipperDto>> GetAllOrderShipper()
+        {
+            return await _orderService.GetAllOrderShipper();
+        }
     }
 }

@@ -7,6 +7,7 @@ namespace WebApi.Service.Interface
     public interface IOrderService
     {
         Task<OrderShipperDto> GetOrderShipper(int orderId);
+        Task<IEnumerable<OrderShipperDto>> GetAllOrderShipper();
 
     }
 }

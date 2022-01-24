@@ -12,5 +12,6 @@ namespace WebApi.Service.Interface
         Task<Category> GetCategoryByIdAsync(int id);
         Task DeleteCategoryAsync(int id);
         Task UpdateCategoryAsync(CategoryCreateDto dto, int id);
+        
     }
 }
