@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WebApi.Dto.Request;
 using WebApi.Dto.Response;
 using WebApi.Service.Interface;
 
@@ -27,6 +28,19 @@ namespace WebApi.Controllers
         public async Task<IEnumerable<OrderShipperDto>> GetAllOrderShipper()
         {
             return await _orderService.GetAllOrderShipper();
+        }
+        
+        [HttpGet("{id}/detail")]
+        public async Task<IEnumerable<OrderDetailShipper>> GetOrderDetail(int id)
+        {
+            return await _orderService.GetOrderDetailShipper(id);
+        }
+        
+        
+        [HttpPut("{id:int}")]
+        public async Task UpdateOrderStatus(int id, OrderStatusDto dto)
+        {
+            await _orderService.UpdateOrderStatus(id, dto.Status);
         }
     }
 }

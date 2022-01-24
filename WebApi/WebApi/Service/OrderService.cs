@@ -6,7 +6,6 @@ using Dapper;
 using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
 using WebApi.Dto.Response;
-using WebApi.Entities;
 using WebApi.Service.Interface;
 
 namespace WebApi.Service
@@ -33,6 +32,24 @@ namespace WebApi.Service
             await using var connection = new MySqlConnection(_connectionString);
             var listOrder = await connection.QueryAsync<OrderShipperDto>("get_all_order_shipper", null, null, null, CommandType.StoredProcedure);
             return listOrder;
+        }
+
+        public async Task UpdateOrderStatus(int orderId, int status)
+        {
+            await using var connection = new MySqlConnection(_connectionString);
+            var parameters = new DynamicParameters();
+            parameters.Add("order_id", orderId);
+            parameters.Add("status", status);
+            await connection.ExecuteAsync("update_order_status", parameters, null, null, CommandType.StoredProcedure);
+        }
+        
+        public async Task<IEnumerable<OrderDetailShipper>> GetOrderDetailShipper(int orderId)
+        {
+            await using var connection = new MySqlConnection(_connectionString);
+            var parameters = new DynamicParameters();
+            parameters.Add("order_id", orderId);
+            var order = await connection.QueryAsync<OrderDetailShipper>("get_order_detail_shipper", parameters, null, null, CommandType.StoredProcedure);
+            return order;
         }
     }
 }

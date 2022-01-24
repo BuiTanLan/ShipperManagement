@@ -8,6 +8,8 @@ namespace WebApi.Service.Interface
     {
         Task<OrderShipperDto> GetOrderShipper(int orderId);
         Task<IEnumerable<OrderShipperDto>> GetAllOrderShipper();
+        Task UpdateOrderStatus(int orderId, int status);
+        Task<IEnumerable<OrderDetailShipper>> GetOrderDetailShipper(int orderId);
 
     }
 }

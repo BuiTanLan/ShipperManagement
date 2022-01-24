@@ -7,8 +7,10 @@ export interface Shipper {
   birthday?: string;
   phone: string;
   address?: string;
-  avatarUrl?: Text;
+  avatarUrl?: string;
   role?: number;
-  createAt?: Date;
-  updateAt?: Date;
+  district: string;
+  province: string;
+  createAt?: string;
+  updateAt?: string;
 }

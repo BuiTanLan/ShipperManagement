@@ -17,6 +17,8 @@ namespace WebApi.Dto.Response
         public string Address { get; set; }
         public string AvatarUrl { get; set; }
         public string Role { get; set; }
+        public string District { get; set; }
+        public string Province { get; set; }
 
     }
 }
