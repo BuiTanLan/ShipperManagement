@@ -18,18 +18,20 @@
     <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
       <h2 class="w3-wide w3-center">LỊCH SỬ ĐƠN HÀNG CỦA TÔI</h2>
 
-        <!-- <div *ngFor="let or of order"> -->
+        <div  *ngFor="let or of order">
 
           <div id="que-hedder2983">
-                <h3><a [routerLink]="['/detail']" routerLinkActive="router-link-active" target="_blank">Thông tin đơn hàng</a></h3> </div>
+                <h3><a (click)=getOrDetail(or.id) target="_blank">Nhấn để xem thông tin đơn hàng</a></h3> </div>
 
             <div class="ques-details10018">
-                <p class="w3-opacity">Tên đơn - Ngày giao - Tổng tiền</p>
-
-            </div>
+                <p class="w3-opacity">Địa chỉ giao hàng: {{or.detailAddress}},{{or.district}}, {{or.province}}  </p>
+                <p  class="w3-opacity">Ngày giờ giao: {{or.updateAt}}</p>
+                <div  *ngFor="let od of orderDetail">
+                  <p  class="w3-opacity">{{od.id}}:{{od.name}}, giá: {{od.price}}</p>
+                </div>
+           </div>
             <hr>
-      <!-- </div> -->
-
+      </div>
 
     </div>
   </div>
