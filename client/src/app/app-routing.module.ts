@@ -6,6 +6,7 @@ import { OrderComponent } from './order/order.component';
 import { UserComponent } from './user/user.component';
 import {LoginComponent} from "./account/login/login.component";
 import {RegisterComponent} from "./account/register/register.component";
+import {AuthGuard} from "./shared/guards/auth.guard";
 
 const routes: Routes = [
   {
@@ -17,11 +18,31 @@ const routes: Routes = [
     loadChildren: () => import('./account/register/register.module').then(m => m.RegisterModule),
     component: RegisterComponent
   },
-  { path: 'order', component: OrderComponent },
-  { path: 'detail', component: DetailOrderComponent },
-  { path: 'history', component: HistoryComponent },
-  { path: 'user', component: UserComponent },
-  { path: '', component: OrderComponent},
+  { path: 'order',
+    component: OrderComponent,
+    canActivate: [AuthGuard],
+
+  },
+  { path: 'detail',
+    component: DetailOrderComponent,
+    canActivate: [AuthGuard],
+
+  },
+  { path: 'history',
+    component: HistoryComponent,
+    canActivate: [AuthGuard],
+
+  },
+  { path: 'user',
+    component: UserComponent,
+    canActivate: [AuthGuard],
+
+  },
+  { path: '',
+    component: OrderComponent,
+    canActivate: [AuthGuard],
+
+  },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 
 ];

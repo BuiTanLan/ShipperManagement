@@ -96,6 +96,7 @@ export class ShipperService {
         return this.getShipperById(id);
       }),
       map((shipper: Shipper) => {
+        console.log(shipper)
         this.currentShipperSource.next(shipper);
       })
     )
