@@ -8,18 +8,16 @@ import { Shipper } from '../shared/models/shipper';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-  public  shippers: Shipper[]= [];
-  public shipper = {} as Shipper;
-
+  shipper = {} as Shipper;
   constructor(
-  private common: OrderService,
-  private serverHttp: ShipperService  ){}
+  private readonly  shipperService: ShipperService  ){}
 
 
   ngOnInit(): void {
-    this.serverHttp.getShipperId(1).subscribe((data)=>{  ///////////////
-      this.shipper = data;
-      console.log(this.shipper);
+    this.shipperService.currentShipper$.subscribe((data)=> {
+      if (data){
+        this.shipper = data;
+      }
     });
 }
 }
