@@ -32,8 +32,8 @@ namespace WebApi.Service
             parameters.Add("password", dto.Password);
             parameters.Add("phone", dto.Phone);
             parameters.Add("address", dto.Address);
-            parameters.Add("province", dto.Province);
-            parameters.Add("district", dto.District);
+            // parameters.Add("province", dto.Province);
+            // parameters.Add("district", dto.District);
             parameters.Add("@id", dbType: DbType.Int32, direction: ParameterDirection.Output);
             await connection.ExecuteAsync("register_shipper", parameters, null, null, CommandType.StoredProcedure);
             var newId = parameters.Get<int>("@id");
@@ -76,8 +76,8 @@ namespace WebApi.Service
             parameters.Add("password", dto.Password);
             parameters.Add("phone", dto.Phone);
             parameters.Add("address", dto.Address);
-            parameters.Add("province", dto.Province);
-            parameters.Add("district", dto.District);
+            // parameters.Add("province", dto.Province);
+            // parameters.Add("district", dto.District);
             parameters.Add("id", id);
             await connection.ExecuteAsync("update_shipper", parameters, null, null, CommandType.StoredProcedure);
         }

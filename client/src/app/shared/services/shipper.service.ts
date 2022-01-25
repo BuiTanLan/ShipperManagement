@@ -53,12 +53,12 @@ export class ShipperService {
     .get<any>(url);
   }
 
-  public getOrderId(orderId: number) {
-    const url = `${this.SHIPPER_API_SERVER}/orders/` + orderId;
+  getListOrderByShipper(shipperId: number) {
+    const url = `${this.SHIPPER_API_SERVER}/orders/${shipperId}`;
     return this.http.get<any>(url);
   }
 
-  public getOrderDetail(orderId: number) {
+  getOrderDetail(orderId: number) {
     const url = `${this.SHIPPER_API_SERVER}/orders/` + orderId+ '/detail';
     return this.http.get<any>(url);
   }

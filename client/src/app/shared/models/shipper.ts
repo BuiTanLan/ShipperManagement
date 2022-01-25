@@ -1,5 +1,5 @@
 export interface Shipper {
-  id?: number;
+  id: number;
   userId: number
   email: string;
   password: string;
