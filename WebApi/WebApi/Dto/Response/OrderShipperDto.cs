@@ -12,6 +12,7 @@ namespace WebApi.Dto.Response
         public string Province { get; set; }
         public DateTime CreateAt { get; set; }
         public DateTime UpdateAt { get; set; }
+        public int ShippingFee { get; set; }
         // public string Fullname { get; set; }
         // public string Phone { get; set; }
         // public string AvatarUrl { get; set; }
