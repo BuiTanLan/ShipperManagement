@@ -18,11 +18,11 @@ namespace WebApi.Controllers
             _orderService = orderService;
         }
 
-        [HttpGet()]
-        public async Task<OrderShipperDto> GetOrderShipper(int shipperId)
-        {
-            return await _orderService.GetOrderShipper(shipperId);
-        }
+        // [HttpGet()]
+        // public async Task<OrderShipperDto> GetOrderShipper(int shipperId)
+        // {
+        //     return await _orderService.GetOrderShipper(shipperId);
+        // }
         
         [HttpGet("{shipperId:int}")]
         public async Task<IEnumerable<OrderShipperDto>> GetAllOrderShipper(int shipperId)

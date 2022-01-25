@@ -21,13 +21,12 @@ namespace WebApi.Service
             _config = config;
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Token:Key"]));
         }
-        public string CreateToken(ShipperCreateRequestDto user,int shipperId)
+        public string CreateToken(string email ,int shipperId)
         {
             var claims = new List<Claim>
             {
                 new(JwtRegisteredClaimNames.Sub, shipperId.ToString()),
-                new(JwtRegisteredClaimNames.Email, user.Email),
-                new(JwtRegisteredClaimNames.GivenName, user.Phone)
+                new(JwtRegisteredClaimNames.Email, email),
             };
 
 

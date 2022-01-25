@@ -4,6 +4,6 @@ namespace WebApi.Service.Interface
 {
     public interface ITokenService
     {
-        string CreateToken(ShipperCreateRequestDto user, int shipperId);
+        string CreateToken(string email, int shipperId);
     }
 }

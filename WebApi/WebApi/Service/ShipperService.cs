@@ -37,24 +37,17 @@ namespace WebApi.Service
             parameters.Add("@id", dbType: DbType.Int32, direction: ParameterDirection.Output);
             await connection.ExecuteAsync("register_shipper", parameters, null, null, CommandType.StoredProcedure);
             var newId = parameters.Get<int>("@id");
-            return _tokenService.CreateToken(dto, newId);
+            return _tokenService.CreateToken(dto.Email, newId);
         }
         
-        public async Task<string> LoginShipperAsync(ShipperCreateRequestDto dto)
+        public async Task<string> LoginShipperAsync(ShipperLoginRequestDto dto)
         {
             await using var connection = new MySqlConnection(_connectionString);
             var parameters = new DynamicParameters();
-            parameters.Add("full_name", dto.FullName);
             parameters.Add("email", dto.Email);
             parameters.Add("password", dto.Password);
-            parameters.Add("phone", dto.Phone);
-            parameters.Add("address", dto.Address);
-            parameters.Add("province", dto.Province);
-            parameters.Add("district", dto.District);
-            parameters.Add("@id", dbType: DbType.Int32, direction: ParameterDirection.Output);
-            await connection.ExecuteAsync("register_shipper", parameters, null, null, CommandType.StoredProcedure);
-            var newId = parameters.Get<int>("@id");
-            return _tokenService.CreateToken(dto, newId);
+            var result = await connection.QueryAsync<int>("login", parameters, null, null, CommandType.StoredProcedure);
+            return _tokenService.CreateToken(dto.Email,result.SingleOrDefault());
         }
         
         public async Task<IEnumerable<ShipperResponseDto>> GetAllShipperAsync()

@@ -12,5 +12,7 @@ namespace WebApi.Service.Interface
         Task<string> RegisterShipperAsync(ShipperCreateRequestDto dto);
         Task UpdateShipperAsync(ShipperCreateRequestDto dto, int id);
         Task DeleteShipperAsync(int id);
+        Task<string> LoginShipperAsync(ShipperLoginRequestDto dto);
+
     }
 }

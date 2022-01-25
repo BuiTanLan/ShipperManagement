@@ -25,6 +25,13 @@ namespace WebApi.Controllers
             return new {AccessToken = result};
 
         }
+        [HttpPost("/login")]
+        public async Task<object> LoginShipper([FromBody] ShipperLoginRequestDto dto)
+        {
+            var result = await _shipperService.LoginShipperAsync(dto);
+            return new {AccessToken = result};
+
+        }
         
         [HttpGet]
         public async Task<IEnumerable<ShipperResponseDto>> GetAllShipperAsync()

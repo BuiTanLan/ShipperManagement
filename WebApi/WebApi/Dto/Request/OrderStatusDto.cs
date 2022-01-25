@@ -2,6 +2,6 @@
 {
     public class OrderStatusDto
     {
-        public int  Status { get; set; }
+        public int Status { get; set; }
     }
 }
