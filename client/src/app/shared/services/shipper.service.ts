@@ -48,13 +48,13 @@ export class ShipperService {
   }
 
   public getOrder() : Observable<any> {
-    const url = `${this.SHIPPER_API_SERVER}/shipper`;
+    const url = `${this.SHIPPER_API_SERVER}/orders`;
     return this.http
     .get<any>(url);
   }
 
   public getOrderId(orderId: number) {
-    const url = `${this.SHIPPER_API_SERVER}/order/` + orderId;
+    const url = `${this.SHIPPER_API_SERVER}/orders/` + orderId;
     return this.http.get<any>(url);
   }
 
