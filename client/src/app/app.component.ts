@@ -2,7 +2,7 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { OrderService } from './shared/services/order.service';
 import { ShipperService } from './shared/services/shipper.service';
-import jwt_decode, {JwtPayload} from "jwt-decode";
+//import jwt_decode, {JwtPayload} from "jwt-decode";
 
 @Component({
   selector: 'app-root',
