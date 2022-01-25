@@ -3,6 +3,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { OrderService } from './shared/services/order.service';
 import { ShipperService } from './shared/services/shipper.service';
 import jwt_decode, {JwtPayload} from "jwt-decode";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,8 @@ export class AppComponent {
 
   constructor(
     private common: OrderService,
-    private readonly shipperService: ShipperService
+    private readonly shipperService: ShipperService,
+    private readonly router: Router
   ) {}
 
   ngOnInit(): void {
@@ -31,11 +33,17 @@ export class AppComponent {
     //   });
     // }
   }
+  logout() {
+    this.shipperService.logout();
+  }
   loadCurrentUser() {
     const token = localStorage.getItem('token');
     this.shipperService.loadCurrentUser(token).subscribe({
       next: () => console.log('load user'),
-      error: error => console.log(error)
+      error: error => {
+        console.log(error);
+        void this.router.navigateByUrl("/login")
+      }
     });
   }
 

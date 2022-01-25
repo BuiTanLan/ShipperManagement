@@ -3,6 +3,7 @@ import { HttpClient} from '@angular/common/http';
 import {concatMap, map, Observable, of, ReplaySubject} from 'rxjs';
 import {environment} from "../../../environments/environment";
 import {Shipper} from "../models/shipper";
+import {Router} from "@angular/router";
 
 
 @Injectable({
@@ -15,7 +16,9 @@ export class ShipperService {
   private currentShipperSource =  new ReplaySubject<Shipper | null>(1)
   currentShipper$ = this.currentShipperSource.asObservable();
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(private readonly http: HttpClient,
+              private readonly router: Router
+  ) {}
 
 
   registerShipper(value: any){
@@ -86,6 +89,12 @@ export class ShipperService {
     const url = `${this.SHIPPER_API_SERVER}/shipper/` + orderID;
     return this.http.get<any>(url);
   }
+  logout(){
+    localStorage.setItem("accessToken",'');
+    this.currentShipperSource.next(null);
+    void this.router.navigateByUrl("/login")
+  }
+
 
 
   login(value: any) {
