@@ -22,7 +22,7 @@ import { HistoryComponent } from './history/history.component';
 import { UserComponent } from './user/user.component';
 import {JwtInterceptor} from "./shared/interceptors/jwt.interceptor";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-
+import {NavBarModule} from "./shared/components/nav-bar/nav-bar.module";
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +30,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     OrderComponent,
     DetailOrderComponent,
     HistoryComponent,
-    UserComponent
+    UserComponent,
   ],
   imports: [
     FormsModule,
@@ -46,7 +46,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     MatSidenavModule,
     MatListModule,
     MatButtonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NavBarModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

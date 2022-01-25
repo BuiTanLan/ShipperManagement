@@ -24,17 +24,6 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.loadCurrentUser()
-    // this.common.totalOrder$.subscribe((total) => {
-    //   this.totalOrder = total;
-    // });
-    // if (this.common.totalOrder === 0) {
-    //   this.serverHttp.getOrder().subscribe((data) => {
-    //     this.common.setTotalOrder(data.length);
-    //   });
-    // }
-  }
-  logout() {
-    this.shipperService.logout();
   }
   loadCurrentUser() {
     const token = localStorage.getItem('token');
@@ -47,12 +36,4 @@ export class AppComponent {
     });
   }
 
-  public openLeftSide() {
-    this.isOpened = !this.isOpened;
-    this.sidenav.toggle();
-  }
-
-  public closeLeftSide() {
-    this.isOpened = false;
-  }
 }
