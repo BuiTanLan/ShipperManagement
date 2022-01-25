@@ -23,14 +23,16 @@ namespace WebApi.Service
             await using var connection = new MySqlConnection(_connectionString);
             var parameters = new DynamicParameters();
             parameters.Add("order_id", orderId);
-            var order = await connection.QueryAsync<OrderShipperDto>("get_order_shipper", parameters, null, null, CommandType.StoredProcedure);
+            var order = await connection.QueryAsync<OrderShipperDto>("get_order_home_shipper", parameters, null, null, CommandType.StoredProcedure);
             return order.SingleOrDefault();
         }
         
-        public async Task<IEnumerable<OrderShipperDto>> GetAllOrderShipper()
+        public async Task<IEnumerable<OrderShipperDto>> GetAllOrderShipper(int shipperId)
         {
             await using var connection = new MySqlConnection(_connectionString);
-            var listOrder = await connection.QueryAsync<OrderShipperDto>("get_all_order_shipper", null, null, null, CommandType.StoredProcedure);
+            var parameters = new DynamicParameters();
+            parameters.Add("shipper_id", shipperId);
+            var listOrder = await connection.QueryAsync<OrderShipperDto>("get_order_home_shipper", parameters, null, null, CommandType.StoredProcedure);
             return listOrder;
         }
 

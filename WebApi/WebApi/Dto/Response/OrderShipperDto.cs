@@ -12,12 +12,12 @@ namespace WebApi.Dto.Response
         public string Province { get; set; }
         public DateTime CreateAt { get; set; }
         public DateTime UpdateAt { get; set; }
-        public string Fullname { get; set; }
-        public string Phone { get; set; }
-        public string AvatarUrl { get; set; }
-        public string StoreName { get; set; }
-        public string StoreAddress { get; set; }
-        public int PaymentType { get; set; }
-        public int PaymentAmount { get; set; }
+        // public string Fullname { get; set; }
+        // public string Phone { get; set; }
+        // public string AvatarUrl { get; set; }
+        // public string StoreName { get; set; }
+        // public string StoreAddress { get; set; }
+        // public int PaymentType { get; set; }
+        // public int PaymentAmount { get; set; }
     }
 }
