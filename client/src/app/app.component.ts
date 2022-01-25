@@ -19,7 +19,7 @@ export class AppComponent {
   constructor(
     private common: OrderService,
     private readonly shipperService: ShipperService,
-    private readonly router: Router
+    public readonly router: Router
   ) {}
 
   ngOnInit(): void {
