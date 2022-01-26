@@ -24,11 +24,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
 
   },
-  { path: 'detail',
-    component: DetailOrderComponent,
-    canActivate: [AuthGuard],
 
-  },
   { path: 'history',
     component: HistoryComponent,
     canActivate: [AuthGuard],

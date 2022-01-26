@@ -15,6 +15,9 @@ import {DetailOrderComponent} from "./detail-order/detail-order.component";
     CommonModule,
     OrderRoutingModule
   ],
-  exports:[OrderComponent]
+  exports:[
+    OrderComponent,
+    DetailOrderComponent
+  ]
 })
 export class OrderModule { }
