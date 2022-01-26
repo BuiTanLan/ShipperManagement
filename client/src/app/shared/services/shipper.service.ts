@@ -58,6 +58,7 @@ export class ShipperService {
     return this.http.get<any>(url);
   }
 
+
   getOrderDetail(orderId: number) {
     const url = `${this.SHIPPER_API_SERVER}/orders/` + orderId+ '/detail';
     return this.http.get<any>(url);
@@ -72,7 +73,10 @@ export class ShipperService {
     const url = `${this.SHIPPER_API_SERVER}/users/` + orderID;
     return this.http.get<any>(url);
   }
-
+  getOrderHistory(shipperId: number) {
+    const url = `${this.SHIPPER_API_SERVER}/orders/${shipperId}`;
+    return this.http.get<any>(url);
+  }
 
   public getStore() : Observable<any> {
     const url = `${this.SHIPPER_API_SERVER}/store`;
