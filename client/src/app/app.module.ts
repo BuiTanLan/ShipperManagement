@@ -16,8 +16,6 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatInputModule } from '@angular/material/input';
-import { OrderComponent } from './order/order.component';
-import { DetailOrderComponent } from './order/detail-order/detail-order.component';
 import { HistoryComponent } from './history/history.component';
 import { UserComponent } from './user/user.component';
 import {JwtInterceptor} from "./shared/interceptors/jwt.interceptor";
@@ -27,8 +25,6 @@ import {NavBarModule} from "./shared/components/nav-bar/nav-bar.module";
   declarations: [
     AppComponent,
     HomeComponent,
-    OrderComponent,
-    DetailOrderComponent,
     HistoryComponent,
     UserComponent,
   ],
