@@ -4,6 +4,8 @@ import { ShipperService } from '../shared/services/shipper.service';
 import { product } from '../shared/models/product';
 import {Order} from "../shared/models/order";
 import {Shipper} from "../shared/models/shipper";
+import {OrderProduct} from "../shared/models/oder-product";
+
 import {concatMap, of} from "rxjs";
 
 @Component({
@@ -14,12 +16,14 @@ import {concatMap, of} from "rxjs";
 export class HistoryComponent implements OnInit {
 
   public  order: Order[]= [];
-  public   orderDetail: product[]= [];
-
+  public  orderDetail: product[]= [];
+  // public  Detail: OrderProduct[]= [];
+  public  id_shipper =0;
   public  user= '';
-  public OD =0;
+  public  OD =0;
   shipper = null as Shipper | null
-
+  public money =0;
+  public a= {} as  product;
 
   constructor(
     private readonly orderService: OrderService,
@@ -29,7 +33,7 @@ export class HistoryComponent implements OnInit {
   ngOnInit(): void {
     this.shipperService.currentShipper$.pipe(
       concatMap((x: Shipper | null) => {
-        if(x){
+        if(x){ this.id_shipper =x.id;
           return this.shipperService.getListOrderByShipper(x.id)
         }
         return of(null);
@@ -42,11 +46,14 @@ export class HistoryComponent implements OnInit {
     });
   }
 
-  public getOrDetail(){
-      this.shipperService.getOrderDetail(1).subscribe((data)=>{
+  public getOrDetail(id : number){
+      this.shipperService.getOrderDetail(id).subscribe((data)=>{
       this.orderDetail = data;
-      console.log(this.orderDetail);
+      console.log(this.a);
 
     });
+  }
+  public GetTotalMoney(money : number){
+     this.money = this.money +money;
   }
 }

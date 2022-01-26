@@ -1,3 +1,5 @@
+
+
 export interface Order {
   id: number;
   userId: number;
@@ -8,4 +10,5 @@ export interface Order {
   detailAddress?: string;
   district?: string;
   province?: string;
+  shippingFee : number;
 }
