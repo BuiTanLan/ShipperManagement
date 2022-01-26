@@ -22,7 +22,6 @@ const routes: Routes = [
     component: OrderComponent,
     loadChildren: () => import('./order/order.module').then(m => m.OrderModule),
     canActivate: [AuthGuard],
-
   },
 
   { path: 'history',
@@ -37,6 +36,7 @@ const routes: Routes = [
   },
   { path: '',
     component: OrderComponent,
+    loadChildren: () => import('./order/order.module').then(m => m.OrderModule),
     canActivate: [AuthGuard],
 
   },

@@ -12,8 +12,7 @@ export class DetailOrderComponent implements OnInit {
   orderDetail: any[] = []
   constructor(
     private readonly shipperService: ShipperService,
-    private readonly activatedRoute: ActivatedRoute,
-    )
+    private readonly activatedRoute: ActivatedRoute)
    {
    }
   ngOnInit(): void {

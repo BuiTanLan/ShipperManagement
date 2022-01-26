@@ -21,6 +21,11 @@ import { UserComponent } from './user/user.component';
 import {JwtInterceptor} from "./shared/interceptors/jwt.interceptor";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NavBarModule} from "./shared/components/nav-bar/nav-bar.module";
+import {OrderComponent} from "./order/order.component";
+import {OrderModule} from "./order/order.module";
+import {RegisterModule} from "./account/register/register.module";
+import {LoginModule} from "./account/login/login.module";
+import {HistoryModule} from "./history/history.module";
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +38,11 @@ import {NavBarModule} from "./shared/components/nav-bar/nav-bar.module";
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
+    OrderModule,
+    RegisterModule,
+    LoginModule,
+    HistoryModule,
+
     HttpClientModule,
     MatSliderModule,
     MatToolbarModule,
