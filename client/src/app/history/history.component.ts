@@ -31,19 +31,7 @@ export class HistoryComponent implements OnInit {
      { }
 
   ngOnInit(): void {
-    this.shipperService.currentShipper$.pipe(
-      concatMap((x: Shipper | null) => {
-        if(x){ this.id_shipper =x.id;
-          return this.shipperService.getListOrderByShipper(x.id)
-        }
-        return of(null);
-      })
-    ).subscribe(x => console.log('gdg', x));
-    this.shipperService.getListOrderByShipper(1).subscribe((data)=>{
-      this.order = data;
-      console.log(this.order);
 
-    });
   }
 
   public getOrDetail(id : number){

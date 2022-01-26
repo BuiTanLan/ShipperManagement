@@ -3,32 +3,34 @@ import { OrderService } from '../shared/services/order.service';
 import { ShipperService } from '../shared/services/shipper.service';
 import { Shipper } from '../shared/models/shipper';
 import {Order} from "../shared/models/order";
+import {concatMap, of} from "rxjs";
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent implements OnInit {
-  public  order: Order[]= [];
+  public  orders: any[] = [];
   public  user= '';
   public OD =0;
 
   constructor(
-    private common: OrderService,
-    private serverHttp: ShipperService  )
+    private readonly : OrderService,
+    private readonly shipperService: ShipperService   )
      {
-       this.OD = common.OD;
      }
 
   ngOnInit(): void {
-    this.serverHttp.getOrder().subscribe((data)=>{
-      this.order = data;
-      console.log(this.order);
+    this.shipperService.currentShipper$.pipe(
+      concatMap((x: Shipper | null) => {
+        if(x){
 
-    });
+          return this.shipperService.getListOrderByShipper(x.id)
+        }
+        return of(null);
+      })
+    ).subscribe(x => this.orders =  x);
+
   }
-  public getOD(id : number){
-    this.common.OD = id;
-    this.OD = this.common.OD;
-  }
+
 }
