@@ -20,14 +20,11 @@ const routes: Routes = [
   },
   { path: 'order',
     component: OrderComponent,
+    loadChildren: () => import('./order/order.module').then(m => m.OrderModule),
     canActivate: [AuthGuard],
 
   },
-  { path: 'detail',
-    component: DetailOrderComponent,
-    canActivate: [AuthGuard],
 
-  },
   { path: 'history',
     component: HistoryComponent,
     canActivate: [AuthGuard],

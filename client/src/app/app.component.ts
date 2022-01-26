@@ -26,7 +26,7 @@ export class AppComponent {
     this.loadCurrentUser()
   }
   loadCurrentUser() {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('accessToken');
     this.shipperService.loadCurrentUser(token).subscribe({
       next: () => console.log('load user'),
       error: error => {

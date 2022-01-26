@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../../shared/services/order.service';
 import { ShipperService } from '../../shared/services/shipper.service';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-detail-order',
@@ -8,18 +9,25 @@ import { ShipperService } from '../../shared/services/shipper.service';
   styleUrls: ['./detail-order.component.scss']
 })
 export class DetailOrderComponent implements OnInit {
-
-public OD = 0;
+  orderDetail: any[] = []
   constructor(
-    private common: OrderService,
-    private serverHttp: ShipperService  )
-     {
-      this.OD = this.common.OD;
-     }
-  ngOnInit(): void {  }
-  public getOD(id : number){
-    this.common.OD = id;
-    this.OD = this.common.OD;
-
+    private readonly shipperService: ShipperService,
+    private readonly activatedRoute: ActivatedRoute,
+    )
+   {
+   }
+  ngOnInit(): void {
+    this.loadOrderDetail();
+    console.log("hggd", this.activatedRoute.snapshot.paramMap.get('id'))
   }
+  loadOrderDetail(){
+    this.shipperService.getOrderDetail(Number(this.activatedRoute.snapshot.paramMap.get('id'))).subscribe({
+      next: orderDetail => {
+        console.log(orderDetail)
+        this.orderDetail = orderDetail;
+      },
+      error: error => console.log(error)
+    });
+  }
+
 }
