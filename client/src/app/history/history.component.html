@@ -21,19 +21,18 @@
         <div  *ngFor="let or of order">
 
           <div id="que-hedder2983">
-                <h3><a (click)=getOrDetail(id_shipper) target="_blank">Nhấn để xem thông tin đơn hàng</a></h3> </div>
+                <h3><a (click)=getOrDetail(this.idShipper) target="_blank">Nhấn để xem thông tin đơn hàng</a></h3> </div>
 
             <div class="ques-details10018">
+              <p class="w3-opacity">{{this.idShipper}}  </p>
+
                 <p class="w3-opacity">Địa chỉ giao hàng: {{or.detailAddress}},{{or.district}}, {{or.province}}  </p>
                 <p  class="w3-opacity">Ngày giờ giao: {{or.updateAt}}</p>
-                <p  class="w3-opacity">Phí ship: {{or.shippingFee}}</p>
-
                 <div  *ngFor="let od of orderDetail">
                   <p  class="w3-opacity">{{od.id}}:{{od.name}}, giá: {{od.price}}</p>
                   <p  class="w3-opacity">Số lượng: 1 </p>
-                   <p  class="w3-opacity">Phí ship: 0 </p>
-
                 </div>
+                <p  class="w3-opacity">Phí ship: 15000 </p>
                 <p  class="w3-opacity">Tổng tiền: {{this.money}}</p>
 
            </div>

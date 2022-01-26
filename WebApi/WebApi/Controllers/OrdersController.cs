@@ -29,7 +29,8 @@ namespace WebApi.Controllers
         {
             return await _orderService.GetAllOrderShipper(shipperId);
         }
-        
+    
+
         [HttpGet("{id}/detail")]
         public async Task<IEnumerable<OrderDetailShipper>> GetOrderDetail(int id)
         {

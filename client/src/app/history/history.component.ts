@@ -18,12 +18,11 @@ export class HistoryComponent implements OnInit {
   public  order: Order[]= [];
   public  orderDetail: product[]= [];
   // public  Detail: OrderProduct[]= [];
-  public  id_shipper =0;
+  public  idShipper = 1;
   public  user= '';
   public  OD =0;
   shipper = null as Shipper | null
   public money =0;
-  public a= {} as  product;
 
   constructor(
     private readonly orderService: OrderService,
@@ -31,13 +30,27 @@ export class HistoryComponent implements OnInit {
      { }
 
   ngOnInit(): void {
+    this.shipperService.currentShipper$.pipe(
+      concatMap((x: Shipper | null) => {
+        if(x){
 
+          return this.shipperService.getListOrderByShipper(x.id)
+        }
+        return of(null);
+      })
+    ).subscribe(x => this.idShipper =  x.id);
+
+
+    this.shipperService.getOrderHistory(this.idShipper).subscribe((data)=>{
+      this.order = data;
+      console.log(data);
+    });
   }
 
-  public getOrDetail(id : number){
-      this.shipperService.getOrderDetail(id).subscribe((data)=>{
-      this.orderDetail = data;
-      console.log(this.a);
+  public getOrDetail(id :number){
+  this.shipperService.getOrderDetail(id).subscribe((data)=>{
+          this.orderDetail = data;
+      console.log(data);
 
     });
   }
